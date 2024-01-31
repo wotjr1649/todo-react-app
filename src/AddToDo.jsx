@@ -23,11 +23,11 @@ class AddToDo extends React.Component {
     const thisItem = this.state.item;
     thisItem.title = e.target.value;
     this.setState({ item: thisItem });
-    console.log(thisItem);
+    console.log(this.state.item.title);
   }
 
   // + 버튼을 눌렀을 떄 호출되는 이벤트 리스너
-  onButtonClick = () => {
+  onButtonClick = (e) => {
     // 배열에 데이터를 삽입하는 함수를 호출
     this.add(this.state.item);
     // 텍스트 필드를 초기화
@@ -38,19 +38,16 @@ class AddToDo extends React.Component {
   enterKeyEventHandler = (e) => {
     if (e.key === "Enter") {
       this.onButtonClick();
-      console.log("HELLO")
     }
   }
 
   render() {
     return (
       <Paper style={{ margin: 16, padding: 16 }}>
-        <Grid contatiner>
+        <Grid container>
           <Grid xs={11} md={11} item style={{ paddingRight: 16 }}>
-            <TextField placeholder="여기에 작성하시오!!!"
-              fullWidth
-              onChange={this.onInputChange}
-              value={this.state.item.title}
+            <TextField placeholder="여기에 작성하시오!!!" fullWidth
+              onChange={this.onInputChange} value={this.state.item.title}
               onKeyPress={this.enterKeyEventHandler} />
           </Grid>
           <Grid xs={1} md={1} item>
@@ -60,7 +57,6 @@ class AddToDo extends React.Component {
           </Grid>
         </Grid>
       </Paper>
-
     );
   }
 }

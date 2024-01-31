@@ -20,6 +20,25 @@ class App extends React.Component {
     // };
   }
 
+  // 화면이 보여질 때 마다 호출되는 수명주기 함수
+  componentDidMount() {
+    // ajax 요청 객체 생성
+    let request = new XMLHttpRequest();
+    // 요청 준비
+    request.open('GET', "http://127.0.0.1:80/todo/?userid=adam");
+
+    // 요청
+    request.send();
+    // 응답 처리
+    request.addEventListener('load', () => {
+      // Json 문자열을 데이터로 변환
+      let data = JSON.parse(request.responseText);
+      console.log(data)
+      // 서버에서 받아온 데이터를 state에 대입해서 화면에 출력
+      this.setState({ items: data })
+    });
+  }
+
   add = (item) => {
     // react는 props는 수정할 수 없고
     // state는 수정이 가능하지만 원본을 직접 수정하는 것은 안되고

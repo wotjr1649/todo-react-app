@@ -23,7 +23,7 @@ class ToDo extends React.Component {
     this.delete = this.props.delete
   }
 
-  // 삭제 버튼을 누를떄 
+  // 삭제 버튼을 누를떄 호출될 이벤트 핸들러
   deleteEventHandler = (e) => {
     this.delete(this.state.item)
   }
@@ -43,6 +43,7 @@ class ToDo extends React.Component {
             fullwidth={true}
           />
         </ListItemText>
+
         <ListItemSecondaryAction>
           <IconButton aria-label="Delete ToDo" onClick={this.deleteEventHandler}>
             <DeleteOutlined />
